@@ -36,25 +36,36 @@ class Products extends React.Component {
         );
         return (
             <div>
-              <center><h1>Product List</h1></center>
-              <input type="text" value={this.state.search} onChange={this.updateSearch.bind(this)}></input>
+            <ul>
+                <li><a class="active" href="/">Obra Azul</a></li>
+                <li><a href="#news">Departamentos</a></li>
+                <li><a href="#contact">Novidades</a></li>
+                <li><a href="#about">Contato</a></li>
+            </ul>
+              <center><h1 className="primary">Materiais</h1></center>
+              <center><input type="text" className="input" placeholder="Busque um material" value={this.state.search} onChange={this.updateSearch.bind(this)}></input>
               <select onChange={this.updateFilter.bind(this)}>
                   <option value="1" selected>Nome Produto</option>
                   <option value="2">Valor</option>
-                  <option value="3">Nome Empresa</option>
+                  <option value="3">Fornecedor</option>
                   <option value="4">Cidade</option>
                   <option value="5">Estado</option>
-              </select>
+              </select></center>
+            <center>
               {filterProducts.map((product) => (
                 <div className="card">
                   <div className="container">
-                    <h5>{product.name}</h5>
-                    <img src={product.picture} width="100" height="100"/>
-                    <h6>{product.price}</h6>
-                    <p>{product.ean}</p>
+                    <h3>{product.name}</h3>
+                    <img className="image" src={product.picture} width="300" height="300"/>
+                    <p><b>Preço:</b> R$ {product.price}</p>
+                  </div>
+                  <div className="bottom">
+                    <button className="button" onClick="">Detalhes</button>
+                    <button className="" onClick="">Comprar</button>
                   </div>
                 </div>
               ))}
+            </center>
             </div>
           )
     }
